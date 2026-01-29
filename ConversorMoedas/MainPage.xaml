@@ -9,7 +9,8 @@
 
       WidthRequest="600" VerticalOptions="Center">
         <Grid ColumnDefinitions="*,Auto,*" RowDefinitions="Auto">
-            <Picker x:Name="FromPicker" Grid.Column="0" Title="De: ">
+            <Picker x:Name="FromPicker" Grid.Column="0" Title="De:"
+                SelectedIndexChanged="OnPickerChanged">
                 <Picker.Items>
                     <x:String>BRL</x:String>
                     <x:String>USD</x:String>
@@ -17,11 +18,12 @@
                 </Picker.Items>
             </Picker>
 
-            <Button Grid.Column="1" Text="Inverter" 
+            <Button x:Name="InverterBtn"  Grid.Column="1" Text="Inverter"
 
-                    Margin="20,0" HeightRequest="40" VerticalOptions="End"/>
+                    Margin="20,0" HeightRequest="40" VerticalOptions="End" Clicked="OnInverterClicked"/>
 
-            <Picker x:Name="ToPicker" Grid.Column="2" Title="Para: ">
+            <Picker x:Name="ToPicker" Grid.Column="2" Title="Para: "
+                    SelectedIndexChanged="OnPickerChanged">
                 <Picker.Items>
                     <x:String>BRL</x:String>
                     <x:String>USD</x:String>
@@ -35,14 +37,15 @@
             <Label Text="Valor: " VerticalOptions="Center" 
 
                  Margin="0,0,20,0"/>
-            <Entry x:Name="AcountEntry" Grid.Column="1" 
+            <Entry x:Name="AmountEntry" Grid.Column="1" 
 
                Placeholder="ex. 100,50," Keyboard="Numeric"
 
-               WidthRequest="300" HorizontalOptions="Start"/>
-            <Button Grid.Column="2" Text="Converter" 
+               WidthRequest="300" HorizontalOptions="Start"
+                   TextChanged="OnAmountChanged"/>
 
-               WidthRequest="100"/>
+            <Button Grid.Column="2" Text="Converter"  WidthRequest="100"
+                    Clicked="OnConverterClicked"/>
         </Grid>
 
         <Label x:Name="ResultLabel" FontSize="18"
